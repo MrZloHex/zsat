@@ -2,4 +2,4 @@
 gt.sh
 
 #vscode
-.vscode/*
+.vscode/**
