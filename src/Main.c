@@ -2,7 +2,7 @@
  
 #define MAXCHAR 1000
 
-int main() {
+int main(int argc, char *argv[]) {
     FILE *file;
     char str[MAXCHAR];
     char* filename = "file_for_test.c";
