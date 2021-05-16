@@ -20,4 +20,4 @@ $(MAIN_FILE).o:
 
 execute:
 	@echo "🚀 Executing ..."
-	./$(EXEC_FILE) test/c.c
+	./$(EXEC_FILE) tests/c.c

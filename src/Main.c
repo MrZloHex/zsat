@@ -3,11 +3,11 @@
 #define MAXCHAR 1000
 
 int main(int argc, char **argv) {
-    printf("\n%s\n", argv[0]);
+    //printf("\n%s\n", argv[1]);
 
     FILE *file;
     char str[MAXCHAR];
-    char* filename = "file_for_test.c";
+    char* filename = argv[1];
  
     file = fopen(filename, "r");
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
         printf("%s", str);
 
     fclose(file);
-    printf("\n%s\n", str);
+    printf("\n");
 
     return 0;
 }
