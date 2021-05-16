@@ -2,8 +2,8 @@
  
 #define MAXCHAR 1000
 
-int main(int argc, char *argv[]) {
-    printf("\n");
+int main(int argc, char **argv) {
+    printf("\n%s\n", argv[0]);
 
     FILE *file;
     char str[MAXCHAR];
