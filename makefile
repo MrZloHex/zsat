@@ -1,5 +1,5 @@
 CXX			:= gcc
-CXX_FLAGS	:= -c -Wall -Wextra -Werror
+CXX_FLAGS	:= -c -Wall -Wextra
 
 MAIN_FILE	:= Main
 SRC_DIR		:= ./src
