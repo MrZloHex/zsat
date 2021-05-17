@@ -1,7 +1,10 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <termios.h>
+#include "Main.h"
+
+
+void print_line(unsigned short width){
+    for (unsigned short i = 0; i < width; i++)
+        printf("-");
+}
 
 int main(int argc, char **argv) {
     //printf("\n%s\n", argv[1]);
@@ -28,14 +31,12 @@ int main(int argc, char **argv) {
     }
 
     // drawing lines
-    for (unsigned short i = 0; i < WIDTH; i++)
-        printf("-");
+    print_line(WIDTH);
     // printing file name
-    printf("        |  %s", filename);
+    printf("        |  File: \x1B[1m%s\x1B[0m", filename);
     printf("\n");
     // drawing lines
-    for (unsigned short i = 0; i < WIDTH; i++)
-        printf("-");
+    print_line(WIDTH);
 
 
 
@@ -55,8 +56,7 @@ int main(int argc, char **argv) {
     }
 
     printf("\n");
-    for (unsigned short i = 0; i < WIDTH; i++)
-        printf("-");
+    print_line(WIDTH);
 
 
     fclose(file);
