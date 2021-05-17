@@ -12,18 +12,9 @@ language(char* file){
         3 - python
         4 - shell
     */
-    //char delim = '.';
-    short pos_del;
-    for (size_t i = 0; i < strlen(file); i++) {
-        printf("%c\n", file[i]);
-        if (strcmp(&file[i], ".") != 0)   
-            pos_del = i;
-    }
-    NEW_LINE();
-    printf("%d\n", pos_del);
-    char ext[strlen(file)-1];
-    for (size_t j = 0; j < (strlen(file) -1); j++) 
-        ext[j] = file[pos_del++];
+    char delim = '.';
+    char *ext = strtok(file, &delim);
+    ext = strtok(NULL, &delim);
     
     printf("%s\n", ext);
     if (strcmp(ext, C) != 0)
@@ -109,10 +100,11 @@ main(int argc, char **argv) {
         2 - python
         3 - shell
     */
-    /*int length = strlen(filename);
+    int length = strlen(filename);
     char extension[length];
     for (int i = 0; i < length; i++)
-        extension[i] = filename[i];*/
+        extension[i] = filename[i];
+    extension[length] = ' ';
     const unsigned short LANG = language(filename);
     NEW_LINE();
 
@@ -124,7 +116,7 @@ main(int argc, char **argv) {
     // printing file name
     MV_RIGHT(8);
     STD_OFFSET();
-    printf("File: %s%s%s", BOLD, filename, STANDART);
+    printf("File: %s%s%s", BOLD, extension, STANDART);
     printf("\n");
     // drawing lines
     print_line(WIDTH);
