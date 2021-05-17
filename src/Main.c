@@ -111,6 +111,8 @@ main(int argc, char **argv) {
     //WERROR
     printf("%d\n", LANG);
 
+
+    /*
     // drawing line
     print_line(WIDTH);
     // printing file name
@@ -135,7 +137,7 @@ main(int argc, char **argv) {
     print_line(WIDTH);
 
 
-    fclose(file);
+    fclose(file);*/
 
     return 0;
 }
