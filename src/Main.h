@@ -21,6 +21,7 @@
 #define ITALIC              "\x1B[3m"
 #define UNDERLINE           "\x1B[4m"
 #define BLINK               "\x1B[5m"
+#define INVISIBLE           "\x1B[8m"
 
 #define MV_UP(i)        printf("\x1B[%dA", (i))
 #define MV_DOWN(i)      printf("\x1B[%dB", (i))

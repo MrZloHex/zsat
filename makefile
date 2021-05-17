@@ -1,5 +1,5 @@
 CXX			:= gcc
-CXX_FLAGS	:= -c -Wall -Wextra
+CXX_FLAGS	:= -c -Wall -Wextra -Werror
 
 MAIN_FILE	:= Main
 SRC_DIR		:= ./src
@@ -20,4 +20,4 @@ $(MAIN_FILE).o:
 
 execute:
 	@echo "🚀 Executing ..."
-	./$(EXEC_FILE) tests/c.c
+	./$(EXEC_FILE) tests/cpp.cpp

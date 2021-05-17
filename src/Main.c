@@ -1,6 +1,10 @@
 #include "Main.h"
 
-unsigned short language(char* file){
+// amount of chars in single string
+const unsigned short MAXCHAR = 1000;
+
+unsigned short 
+language(char* file){
     /*
         0 - txt
         1 - c
@@ -8,10 +12,20 @@ unsigned short language(char* file){
         3 - python
         4 - shell
     */
-    char delim = ".";
-    char* ext;
-    ext = strtok(file, delim);
-    ext = strtok(NULL, delim);
+    //char delim = '.';
+    short pos_del;
+    for (size_t i = 0; i < strlen(file); i++) {
+        printf("%c\n", file[i]);
+        if (strcmp(&file[i], ".") != 0)   
+            pos_del = i;
+    }
+    NEW_LINE();
+    printf("%d\n", pos_del);
+    char ext[strlen(file)-1];
+    for (size_t j = 0; j < (strlen(file) -1); j++) 
+        ext[j] = file[pos_del++];
+    
+    printf("%s\n", ext);
     if (strcmp(ext, C) != 0)
         return 1;
     else if (strcmp(ext, CPP) != 0)
@@ -26,7 +40,8 @@ unsigned short language(char* file){
         return 0;
 }
 
-void print_number(unsigned int counter){
+void 
+print_number(unsigned int counter){
     printf("%s%s", ITALIC, DIM);
     if (counter < 10) {
         MV_RIGHT(5);
@@ -51,17 +66,23 @@ void print_number(unsigned int counter){
     printf("%s", STANDART);
 }
 
-void print_line(unsigned short width){
+void 
+print_line(unsigned short width){
     for (unsigned short i = 0; i < width; i++)
         printf("-");
     NEW_LINE();
 }
 
-int main(int argc, char **argv) {
+int 
+main(int argc, char **argv) {
     //printf("\n%s\n", argv[1]);
+    //for WERROR
+    printf("%s%d%s",INVISIBLE, argc, STANDART);
+    MV_LEFT(1);
 
-    // amount of chars in single string
-    const unsigned short MAXCHAR = 1000;
+
+
+    
 
     // detecting width of terminal
     struct winsize w;
@@ -88,8 +109,15 @@ int main(int argc, char **argv) {
         2 - python
         3 - shell
     */
+    /*int length = strlen(filename);
+    char extension[length];
+    for (int i = 0; i < length; i++)
+        extension[i] = filename[i];*/
     const unsigned short LANG = language(filename);
+    NEW_LINE();
 
+    //WERROR
+    printf("%d\n", LANG);
 
     // drawing line
     print_line(WIDTH);
