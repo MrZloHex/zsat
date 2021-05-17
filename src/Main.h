@@ -1,8 +1,18 @@
+// include libraries
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <termios.h>
+#include <string.h>
 
+// defining supporting languages
+#define TEXT            "txt"
+#define C               "c"
+#define CPP             "cpp"
+#define PYTHON          "py"
+#define SHELL           "sh"
+
+// defining ANSI escapes
 #define ESC             "\x1B"
 
 #define STANDART            "\x1B[0m"

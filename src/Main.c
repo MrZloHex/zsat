@@ -1,5 +1,31 @@
 #include "Main.h"
 
+unsigned short language(char* file){
+    /*
+        0 - txt
+        1 - c
+        2 - c++
+        3 - python
+        4 - shell
+    */
+    char delim = ".";
+    char* ext;
+    ext = strtok(file, delim);
+    ext = strtok(NULL, delim);
+    if (strcmp(ext, C) != 0)
+        return 1;
+    else if (strcmp(ext, CPP) != 0)
+        return 2;
+    else if (strcmp(ext, PYTHON) != 0)
+        return 3;
+    else if (strcmp(ext, SHELL) != 0)
+        return 4;
+    else if (strcmp(ext, TEXT) != 0)
+        return 0;
+    else
+        return 0;
+}
+
 void print_number(unsigned int counter){
     printf("%s%s", ITALIC, DIM);
     if (counter < 10) {
@@ -36,9 +62,11 @@ int main(int argc, char **argv) {
 
     // amount of chars in single string
     const unsigned short MAXCHAR = 1000;
+
     // detecting width of terminal
     struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+
     const unsigned short WIDTH = w.ws_col;
 
 
@@ -53,6 +81,14 @@ int main(int argc, char **argv) {
         printf("Could not open file %s",filename);
         return 1;
     }
+    // detecting extencion and programming language
+    /*
+        0 - c
+        1 - c++
+        2 - python
+        3 - shell
+    */
+    const unsigned short LANG = language(filename);
 
 
     // drawing line
