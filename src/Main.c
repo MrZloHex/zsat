@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
     for (unsigned short i = 0; i < WIDTH; i++)
         printf("-");
     // printing file name
-    printf("        |\t%s", filename);
+    printf("        |  %s", filename);
     printf("\n");
     // drawing lines
     for (unsigned short i = 0; i < WIDTH; i++)
@@ -41,9 +41,22 @@ int main(int argc, char **argv) {
 
     while (fgets(str, MAXCHAR, file) != NULL) {
         counter++;
-        printf("%d\t%s", counter, str);
+
+        if (counter < 10)
+            printf("     %d  |", counter);
+        else if (counter < 100)
+            printf("    %d  |", counter);
+        else if (counter < 1000)
+            printf("   %d  |", counter);
+        else if (counter < 10000)
+            printf("  %d  |", counter);
+        
+        printf("  %s", str);
     }
 
+    printf("\n");
+    for (unsigned short i = 0; i < WIDTH; i++)
+        printf("-");
 
 
     fclose(file);
