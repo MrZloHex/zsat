@@ -7,6 +7,7 @@ void print_line(unsigned short width){
 }
 
 int main(int argc, char **argv) {
+    printf("\a");
     //printf("\n%s\n", argv[1]);
 
     // counter of strings   
@@ -33,7 +34,7 @@ int main(int argc, char **argv) {
     // drawing lines
     print_line(WIDTH);
     // printing file name
-    printf("        |  File: \x1B[1m%s\x1B[0m", filename);
+    printf("        |  File: %s%s%s", BLINK, filename, STADART);
     printf("\n");
     // drawing lines
     print_line(WIDTH);
