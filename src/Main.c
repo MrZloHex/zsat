@@ -13,22 +13,26 @@ language(char* file){
         4 - shell
     */
     char delim = '.';
-    char *ext = strtok(file, &delim);
-    ext = strtok(NULL, &delim);
+    /*char *ext = strtok(file, &delim);
+    ext = strtok(NULL, &delim);*/
+    char *ext = strchr(file, delim);
+    // not to detect dot
+    ext += 1;
     
     printf("%s\n", ext);
-    if (strcmp(ext, C) != 0)
+    if (strcmp(ext, C) == 0)
         return 1;
-    else if (strcmp(ext, CPP) != 0)
+    else if (strcmp(ext, CPP) == 0)
         return 2;
-    else if (strcmp(ext, PYTHON) != 0)
+    else if (strcmp(ext, PYTHON) == 0)
         return 3;
-    else if (strcmp(ext, SHELL) != 0)
+    else if (strcmp(ext, SHELL) == 0)
         return 4;
-    else if (strcmp(ext, TEXT) != 0)
+    else if (strcmp(ext, TEXT) == 0)
         return 0;
     else
         return 0;
+    return 0;
 }
 
 void 
@@ -112,13 +116,13 @@ main(int argc, char **argv) {
     printf("%d\n", LANG);
 
 
-    /*
+    
     // drawing line
     print_line(WIDTH);
     // printing file name
     MV_RIGHT(8);
     STD_OFFSET();
-    printf("File: %s%s%s", BOLD, extension, STANDART);
+    printf("File: %s%s%s", BOLD, filename, STANDART);
     printf("\n");
     // drawing lines
     print_line(WIDTH);
@@ -137,7 +141,7 @@ main(int argc, char **argv) {
     print_line(WIDTH);
 
 
-    fclose(file);*/
+    fclose(file);
 
     return 0;
 }
