@@ -1,4 +1,36 @@
-#include "Main.h"
+// include libraries
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <termios.h>
+#include <string.h>
+
+// defining supporting languages
+#define TEXT            0
+#define C               1
+#define CPP             2
+#define PYTHON          3
+#define SHELL           4
+#define JAVA            5
+
+// escape sequances
+#define ESC             "\x1B"
+
+#define STANDART            "\x1B[0m"
+#define BOLD                "\x1B[1m"
+#define DIM                 "\x1B[2m"
+#define ITALIC              "\x1B[3m"
+#define UNDERLINE           "\x1B[4m"
+#define BLINK               "\x1B[5m"
+#define INVISIBLE           "\x1B[8m"
+
+#define MV_UP(i)        printf("\x1B[%dA", (i))
+#define MV_DOWN(i)      printf("\x1B[%dB", (i))
+#define MV_RIGHT(i)     printf("\x1B[%dC", (i))
+#define MV_LEFT(i)      printf("\x1B[%dD", (i))
+
+#define NEW_LINE()      printf("\n");
+#define STD_OFFSET()    printf("|\x1B[2C")
 
 // amount of chars in single string
 const unsigned short MAXCHAR = 1000;
@@ -37,6 +69,7 @@ language(char* file){
         2 - c++
         3 - python
         4 - shell
+        5 - java
     */
     char delim = '.';
     char *ext = strchr(file, delim);
@@ -49,8 +82,11 @@ language(char* file){
     else if ((strcmp(ext, "py") == 0) || (strcmp(ext, "pyd") == 0) ||
              (strcmp(ext, "pyo") == 0) || (strcmp(ext, "pyc") == 0))
         return 3;
-    else if (strcmp(ext, "sh") == 0)
+    else if ((strcmp(ext, "sh") == 0) || (strcmp(ext, "bash") == 0) ||
+             (strcmp(ext, "zsh") == 0) || (strcmp(ext, "csh") == 0))
         return 4;
+    else if ((strcmp(ext, "java") == 0))
+        return 5;
     else if (strcmp(ext, "txt") == 0)
         return 0;
     else
@@ -88,6 +124,10 @@ print_lang(unsigned short lang) {
     else if (lang == SHELL) {
         printf("Shell");
         MV_RIGHT(2);
+    }
+    else if (lang == JAVA) {
+        printf("Java");
+        MV_RIGHT(3);
     }
     else {
         printf("Text");
