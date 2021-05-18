@@ -4,13 +4,15 @@
 #include <sys/ioctl.h>
 #include <termios.h>
 #include <string.h>
+// include files to color backlight
+#include "lib/C.h"
 
 // defining supporting languages
-#define TEXT            "txt"
-#define C               "c"
-#define CPP             "cpp"
-#define PYTHON          "py"
-#define SHELL           "sh"
+#define TEXT            0
+#define C               1
+#define CPP             2
+#define PYTHON          3
+#define SHELL           4
 
 // defining ANSI escapes
 #define ESC             "\x1B"
