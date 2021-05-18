@@ -3,29 +3,31 @@
 // amount of chars in single string
 const unsigned short MAXCHAR = 1000;
 
-void
-lang_choice(unsigned short lang, char* filename){
-    if (lang == TEXT) {
-        plain_text(filename);
+void 
+print_number(unsigned int counter){
+    printf("%s%s", ITALIC, DIM);
+    if (counter < 10) {
+        MV_RIGHT(5);
+        printf("%d", counter);
+        MV_RIGHT(2);
     }
-    else if (lang == C) {
-        c_lang(filename);
+    else if (counter < 100) {
+        MV_RIGHT(4);
+        printf("%d", counter);
+        MV_RIGHT(2);
     }
-    else if (lang == CPP) {
-        cpp_lang(filename);
+    else if (counter < 1000) {
+        MV_RIGHT(3);
+        printf("%d", counter);
+        MV_RIGHT(2);
     }
-    else if (lang == PYTHON) {
-        python_lang(filename);
+    else if (counter < 10000) {
+        MV_RIGHT(2);
+        printf("%d", counter);
+        MV_RIGHT(2);
     }
-    else if (lang == SHELL) {
-        shell_lang(filename);
-    }
-    else {
-        plain_text(filename);
-    }
+    printf("%s", STANDART);
 }
-
-
 
 unsigned short 
 language(char* file){
@@ -40,11 +42,12 @@ language(char* file){
     char *ext = strchr(file, delim);
     // not to detect dot
     ext += 1;
-    if (strcmp(ext, "c") == 0)
+    if ((strcmp(ext, "c") == 0) || (strcmp(ext, "h") == 0))
         return 1;
-    else if (strcmp(ext, "cpp") == 0)
+    else if ((strcmp(ext, "cpp") == 0) || (strcmp(ext, "hpp") == 0))
         return 2;
-    else if (strcmp(ext, "py") == 0)
+    else if ((strcmp(ext, "py") == 0) || (strcmp(ext, "pyd") == 0) ||
+             (strcmp(ext, "pyo") == 0) || (strcmp(ext, "pyc") == 0))
         return 3;
     else if (strcmp(ext, "sh") == 0)
         return 4;
@@ -102,10 +105,6 @@ main(int argc, char **argv) {
     printf("%s%d%s",INVISIBLE, argc, STANDART);
     MV_LEFT(1);
 
-
-
-    
-
     // detecting width of terminal
     struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
@@ -120,7 +119,6 @@ main(int argc, char **argv) {
         printf("Could not open file %s",filename);
         return 1;
     }
-    fclose(file);
     // detecting extencion and programming language
     /*
         0 - c
@@ -144,8 +142,14 @@ main(int argc, char **argv) {
     // drawing lines
     print_line(WIDTH);
 
-    lang_choice(LANG, filename);
-
+    char str[MAXCHAR];
+    unsigned int counter = 1;
+    while (fgets(str, MAXCHAR, file) != NULL) {
+        print_number(counter);
+        STD_OFFSET();
+        printf("%s", str);
+        counter++;
+    }
 
     NEW_LINE();
     print_line(WIDTH);
