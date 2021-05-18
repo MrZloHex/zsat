@@ -29,7 +29,7 @@
 #define MV_RIGHT(i)     printf("\x1B[%dC", (i))
 #define MV_LEFT(i)      printf("\x1B[%dD", (i))
 
-#define NEW_LINE()      printf("\n");
+#define NEW_LINE()      printf("\n")
 #define STD_OFFSET()    printf("|\x1B[2C")
 
 // amount of chars in single string
