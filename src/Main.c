@@ -15,12 +15,10 @@ lang_choice(unsigned short lang, char* filename){
         cpp_lang(filename);
     }
     else if (lang == PYTHON) {
-        printf("Python");
-        MV_RIGHT(1);
+        python_lang(filename);
     }
     else if (lang == SHELL) {
-        printf("Shell");
-        MV_RIGHT(2);
+        shell_lang(filename);
     }
     else {
         printf("Text");

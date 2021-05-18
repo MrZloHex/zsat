@@ -7,6 +7,8 @@
 // include files to color backlight
 #include "lib/C.h"
 #include "lib/CPP.h"
+#include "lib/PYTHON.h"
+#include "lib/SHELL.h"
 // ANSI escapes
 #include "lib/ANSI.h"
 
