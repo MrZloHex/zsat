@@ -18,5 +18,11 @@
 #define NEW_LINE()      printf("\n");
 #define STD_OFFSET()    printf("|\x1B[2C")
 
+// color scheme
+#define VAR_TYPE        "\x1B[38;5;26m"    
+#define STR_LITERAL     "\x1B[38;5;208m"
+#define ESCAPE_CHAR     "\x1B[38;5;215m"
+#define STD_RESEVED     "\x1B[38;5;201m"
+
 void
 print_number(unsigned int counter);

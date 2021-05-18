@@ -9,6 +9,7 @@
 #include "lib/CPP.h"
 #include "lib/PYTHON.h"
 #include "lib/SHELL.h"
+#include "lib/TEXT.h"
 // ANSI escapes
 #include "lib/ANSI.h"
 

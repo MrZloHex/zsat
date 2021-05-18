@@ -6,7 +6,7 @@ const unsigned short MAXCHAR = 1000;
 void
 lang_choice(unsigned short lang, char* filename){
     if (lang == TEXT) {
-        
+        plain_text(filename);
     }
     else if (lang == C) {
         c_lang(filename);
@@ -21,8 +21,7 @@ lang_choice(unsigned short lang, char* filename){
         shell_lang(filename);
     }
     else {
-        printf("Text");
-        MV_RIGHT(3);
+        plain_text(filename);
     }
 }
 

@@ -1,6 +1,12 @@
 #include "C.h"
 
 void
+analys_str(char str[1000]){
+    printf("%s%s%s", STD_RESEVED, str, STANDART);
+}
+
+
+void
 c_lang(char *filename) {
     FILE *file;
     file = fopen(filename, "r");
@@ -10,7 +16,7 @@ c_lang(char *filename) {
     while (fgets(str, 1000, file) != NULL) {
         print_number(counter);
         STD_OFFSET();
-        printf("%s", str);
+        analys_str(str);
         counter++;
     }
 
