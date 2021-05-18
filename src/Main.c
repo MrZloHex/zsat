@@ -12,8 +12,7 @@ lang_choice(unsigned short lang, char* filename){
         c_lang(filename);
     }
     else if (lang == CPP) {
-        printf("C++");
-        MV_RIGHT(4);
+        cpp_lang(filename);
     }
     else if (lang == PYTHON) {
         printf("Python");
@@ -57,35 +56,6 @@ language(char* file){
     else
         return 0;
 }
-
-
-
-void 
-print_number(unsigned int counter){
-    printf("%s%s", ITALIC, DIM);
-    if (counter < 10) {
-        MV_RIGHT(5);
-        printf("%d", counter);
-        MV_RIGHT(2);
-    }
-    else if (counter < 100) {
-        MV_RIGHT(4);
-        printf("%d", counter);
-        MV_RIGHT(2);
-    }
-    else if (counter < 1000) {
-        MV_RIGHT(3);
-        printf("%d", counter);
-        MV_RIGHT(2);
-    }
-    else if (counter < 10000) {
-        MV_RIGHT(2);
-        printf("%d", counter);
-        MV_RIGHT(2);
-    }
-    printf("%s", STANDART);
-}
-
 
 
 void 
@@ -142,10 +112,7 @@ main(int argc, char **argv) {
     // detecting width of terminal
     struct winsize w;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-
     const unsigned short WIDTH = w.ws_col;
-
-
     // opening file for reading
     FILE* file;
     // filename is first argument of executing
@@ -182,14 +149,6 @@ main(int argc, char **argv) {
 
     lang_choice(LANG, filename);
 
-    // counter of strings   
-    /*unsigned int counter = 1;
-    while (fgets(str, MAXCHAR, file) != NULL) {
-        print_number(counter);
-        STD_OFFSET();
-        printf("%s", str);
-        counter++;
-    }*/
 
     NEW_LINE();
     print_line(WIDTH);
