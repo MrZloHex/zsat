@@ -34,3 +34,7 @@ Simple replication of `cat` tool and try to write it in c language.
 | Language | Extension |
 | -------- | --------- |
 | Python   |   py </br>  pyo </br>  pyd </br>  pyc |
+| C	   | c </br> h |
+| C++      | cpp </br> hpp |
+| Shell    | sh </br> bash |
+| Java     | java </br> class |
