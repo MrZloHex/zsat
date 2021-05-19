@@ -35,10 +35,10 @@ install(){
 
     make compile
 
-	sudo mv ./cmp/zsat /usr/local/bin
+	sudo mv cmp/zsat /usr/local/bin
 
 	sudo mkdir $MAN_PATH
-	sudo mv zsfetch.1 $MAN_PATH
+	sudo mv src/zsat.1 $MAN_PATH
 	sudo gzip $MAN_PATH/zsat.1
 	
 	if [[ $OS_TYPE == "linux" ]]
