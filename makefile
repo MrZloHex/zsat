@@ -16,9 +16,12 @@ execute:
 	@echo "🚀 Executing ..."
 	$(CMP_DIR)/$(EXEC_FILE) tests/c.c
 
-compile: $(MAIN_FILE).o
+compile: directory $(MAIN_FILE).o
 	@echo "🚧 Building ..."
 	$(CXX) $(CMP_DIR)/*.o -o $(CMP_DIR)/$(EXEC_FILE)
 
 $(MAIN_FILE).o:
 	$(CXX) $(CXX_FLAGS) -c $(SRC_DIR)/$(MAIN_FILE).c -o $(CMP_DIR)/$(MAIN_FILE).o
+
+directory:
+	-mkdir cmp/
