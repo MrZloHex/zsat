@@ -36,7 +36,7 @@ install(){
     make compile
 
 	cd cmp
-	sudo mv cmp/zsat /usr/local/bin
+	sudo mv zsat /usr/local/bin
 
 	cd ..
 	sudo mkdir $MAN_PATH
